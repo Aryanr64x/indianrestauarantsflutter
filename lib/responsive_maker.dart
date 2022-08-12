@@ -32,22 +32,22 @@ class ResponsiveMaker {
   Axis setAxisAsPerBreakPoint(
       {required forPhone, required forTablet, required forDesktop}) {
     if (screenWidth > 1100) {
-      return forPhone;
+      return forDesktop;
     } else if (screenWidth <= 1100 && screenWidth > 750) {
       return forTablet;
     } else {
-      return forDesktop;
+      return forPhone;
     }
   }
 
   MainAxisSize setAxisSizeAsPerBreakPoint(
       {required forPhone, required forTablet, required forDesktop}) {
     if (screenWidth > 1100) {
-      return forPhone;
+      return forDesktop;
     } else if (screenWidth <= 1100 && screenWidth > 750) {
       return forTablet;
     } else {
-      return forDesktop;
+      return forPhone;
     }
   }
 }

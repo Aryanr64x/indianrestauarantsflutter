@@ -1,15 +1,22 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
+import 'package:indianrestaurants/responsive_maker.dart';
 
 class ContactSection extends StatelessWidget {
-  const ContactSection({Key? key}) : super(key: key);
+  ContactSection({Key? key}) : super(key: key);
+  late ResponsiveMaker responsiveMaker;
 
   @override
   Widget build(BuildContext context) {
+    double screenWidth = MediaQuery.of(context).size.width;
+    responsiveMaker = ResponsiveMaker(screenWidth);
     return Container(
       color: Colors.black,
-      padding: EdgeInsets.only(left: 144, right: 144, top: 60),
+      padding: EdgeInsets.symmetric(
+          vertical: 120,
+          horizontal: responsiveMaker.setDoubleAsPerConstraints(
+              forPhone: 20, forTablet: 60, forDesktop: 140)),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
@@ -18,8 +25,10 @@ class ContactSection extends StatelessWidget {
           ),
           Text(
             "Wanna connect with me ?",
+            textAlign: TextAlign.center,
             style: TextStyle(
-                fontSize: 64,
+                fontSize: responsiveMaker.setDoubleAsPerConstraints(
+                    forPhone: 48, forTablet: 64, forDesktop: 64),
                 height: 0.9,
                 color: Theme.of(context).primaryColor),
           ),

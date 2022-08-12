@@ -15,7 +15,10 @@ class LatestWorksSection extends StatelessWidget {
     responsiveMaker = ResponsiveMaker(screenWidth);
 
     return Container(
-      padding: EdgeInsets.only(top: 60, left: 140, right: 140),
+      padding: EdgeInsets.symmetric(
+          vertical: 120,
+          horizontal: responsiveMaker.setDoubleAsPerConstraints(
+              forPhone: 20, forTablet: 80, forDesktop: 140)),
       color: Colors.black,
       child: Column(
         children: [
@@ -30,50 +33,72 @@ class LatestWorksSection extends StatelessWidget {
             height: 60,
           ),
           Flex(
-            mainAxisSize: MainAxisSize.min,
-            direction: Axis.vertical,
+            mainAxisSize: responsiveMaker.setAxisSizeAsPerBreakPoint(
+              forPhone: MainAxisSize.min,
+              forTablet: MainAxisSize.min,
+              forDesktop: MainAxisSize.max,
+            ),
+            direction: responsiveMaker.setAxisAsPerBreakPoint(
+                forPhone: Axis.vertical,
+                forTablet: Axis.vertical,
+                forDesktop: Axis.horizontal),
             children: [
-              ClipRRect(
-                borderRadius: BorderRadius.circular(15.0),
-                child: Image(
-                  image: AssetImage("images/bmandar.png"),
-                  height: 300,
-                  width: 800,
+              Flexible(
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(15.0),
+                  child: Image(
+                    image: AssetImage("images/bmandar.png"),
+                    height: 300,
+                    width: 800,
+                  ),
                 ),
               ),
               SizedBox(
                 width: 20,
               ),
-              Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Text(
-                    "bangloremandarin.com",
-                    style: TextStyle(
-                        color: Theme.of(context).primaryColor, fontSize: 24),
-                  ),
-                  SizedBox(
-                    height: 20,
-                  ),
-                  Text(
-                    "This is a concept website recently built for a chinese restaurant at the heart of city of Bengaluru . The website&aposs intent is to help increase the restaurant&aposs sales by its conversion centric design",
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      color: Theme.of(context).primaryColor,
-                      fontSize: 18,
+              Flexible(
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Text(
+                      "bangloremandarin.com",
+                      style: TextStyle(
+                          color: Theme.of(context).primaryColor, fontSize: 24),
                     ),
-                  ),
-                ],
+                    SizedBox(
+                      height: 20,
+                    ),
+                    Text(
+                      "This is a concept website recently built for a chinese restaurant at the heart of city of Bengaluru . The website&aposs intent is to help increase the restaurant&aposs sales by its conversion centric design",
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        color: Theme.of(context).primaryColor,
+                        fontSize: 18,
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ],
           ),
           SizedBox(
             height: 80,
           ),
-          Row(
+          Flex(
+            verticalDirection: VerticalDirection.up,
+            mainAxisSize: responsiveMaker.setAxisSizeAsPerBreakPoint(
+              forPhone: MainAxisSize.min,
+              forTablet: MainAxisSize.min,
+              forDesktop: MainAxisSize.max,
+            ),
+            direction: responsiveMaker.setAxisAsPerBreakPoint(
+                forPhone: Axis.vertical,
+                forTablet: Axis.vertical,
+                forDesktop: Axis.horizontal),
             children: [
-              Expanded(
+              Flexible(
                 child: Column(
+                  mainAxisSize: MainAxisSize.min,
                   children: [
                     Text(
                       "indiangrill.com",
@@ -97,7 +122,7 @@ class LatestWorksSection extends StatelessWidget {
               SizedBox(
                 width: 20,
               ),
-              Expanded(
+              Flexible(
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(15.0),
                   child: Image(
